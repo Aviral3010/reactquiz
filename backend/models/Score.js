@@ -10,6 +10,10 @@ const ScoreSchema = new Schema({
         type: Number,
         required: true,
     },
+    total: {
+        type: Number,
+        required: true,
+    },
     quiz: {
         type: String,
         required: true

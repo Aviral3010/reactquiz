@@ -26,13 +26,13 @@ function Profile() {
             console.log(res);
             // if ()
             if (res.status === 200) {
-                setData(res.data)
+                setData(res.data,"if")
              
             }
 
 
         } catch (error) {
-            console.log(error);
+            console.log(error,"catch");
             console.log(error.response.data)
             { alert(error.response.data.error) }
 
@@ -41,7 +41,7 @@ function Profile() {
    
     return (
         <div >
-        <button className='btn' onClick={getdata}>hello</button>
+        <button className='btn' onClick={getdata}>Click To View</button>
 
             <h3>User Details</h3><br />
             <center>
@@ -50,28 +50,32 @@ function Profile() {
                     <tr>
                         <th>User Name</th>
                         <td>
-                                {data}
+                                {data.name}
                         </td>
                     </tr>
                     <tr>
                         <th>Contact</th>
                         <td>
+                        {data.mobile}
                         </td>
                     </tr>
                     <tr>
                         <th>Email</th>
                         <td>
+                        {data.email}
                         </td>
 
                     </tr>
                     <tr>
                         <th>Date of Birth</th>
                         <td>
+                        {data.DOB}
                         </td>
                     </tr>
                     <tr>
                         <th>Address</th>
                         <td>
+                        {data.address}
                         </td>
                     </tr>
 

@@ -139,6 +139,7 @@ router.get('/score', async (req, res) => {
             user: "61fb5e40b6aa9a9249cfcbe6",
 
             score: 12,
+            total:100,
             quiz: 'gk'
 
         }
@@ -160,8 +161,9 @@ router.get('/quiz/:quizID', fetchuser, async (req, res) => {
 
 router.get('/getscore', fetchuser, async (req, res) => {
     try {
-        userID = req.user.id
+       var  userID = req.user.id
         const score = await Score.find({ user:userID })
+        console.log(score);
         res.send(score)
     } catch (error) {
         

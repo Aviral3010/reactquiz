@@ -18,7 +18,7 @@ function Display() {
 
   return (
     <>
-      {localStorage.authToken?<AfterLoginHome/>: <Initial />}
+      {a.auth?<AfterLoginHome/>: <Initial />}
 
       {/* <Test/> */}
       {/* <AfterLoginHome /> */}
