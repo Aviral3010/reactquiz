@@ -1,4 +1,4 @@
-import React, {useContext,useState} from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Cong from '../../image/congratulations.png';
 import userContext from '../../context/user/usercontext'
 import axios from 'axios';
@@ -7,60 +7,59 @@ import axios from 'axios';
 
 
 function Progress(props) {
+  const [sty,setSty]=useState({width: `${props.per}%`, backgroundColor: "#ac0dfd" })
+ 
   return (
     <tr>
-      <td>Mock Test</td>
+      <td>{props.name}</td>
       <td >
         <div className="progress">
-          <div className="progress-bar" role="progressbar" style={{ "width": "70%", "background-color": "#ac0dfd" }} aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">70%</div>
+          <div className="progress-bar" role="progressbar" style={sty} aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">{props.per}</div>
         </div>
       </td>
       <td></td>
-      <td>70%</td>
+      <td>{props.per}</td>
     </tr>
   )
 }
 
 
 function Scorecard() {
-  const { auth, setauth } = useContext(userContext)
+  const { auth } = useContext(userContext)
   const [data, setData] = useState('')
 
   const getscore = async () => {
-    try {
+  
+   
 
-      const config = {
-        method: 'get',
-        url: 'http://localhost:5000/user/getscore',
-        headers: {
-          'User-Agent': 'Axios - console app',
-          'Content-Type': ' application/json',
-          'auth-token': auth
-        },
-
-      }
-
-      let res = await axios(config)
-
-      console.log(res);
-      // if ()
-      if (res.status === 200) {
-        setData(res.data)
-
-      }
-
-
-    } catch (error) {
-      console.log(error, "catch");
-      console.log(error.response.data)
-      { alert(error.response.data.error) }
-
+    let headersList = {
+      "Accept": "*/*",
+      'Content-Type': 'application/json',
+      "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+      "auth-token": auth 
     }
+
+    let reqOptions = {
+      url: "http://localhost:5000/user/getscore",
+      method: "get",
+      headers: headersList,
+    }
+
+    axios.request(reqOptions).then(function (response) {
+      setData(response.data)
+
+      console.log(response.data);
+    })
   }
+  useEffect(async()=>{
+    
+      await getscore()
+    
+  },[])
   return (
     <div>
       <>
-      <button className='btn' onClick={getscore}>Click To View</button>
+        {/* <button className='btn' onClick={getscore}>Click To View</button> */}
         <section id="sec" style={{ 'background': '#1eda5c', 'width': '68%', 'float': 'right', 'height': '600px', 'color': 'black', 'borderRadius': '20px' }}>
           <br />
           <center>
@@ -73,9 +72,9 @@ function Scorecard() {
                 <th style={{ "width": "100px" }}></th>
                 <th>Score</th>
               </tr>
-              {/* {(data.map((data, index) => {
-                return (<Progress />)
-              }))} */}
+              {([...data].map((data, index) => {
+                return (<Progress name={data.quiz} key={index} per={(data.score/data.total)*100}/>)
+              }))}
               {/* <!-- <tr>
                     <td></td>
                     <td>Average</td>

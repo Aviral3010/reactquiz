@@ -7,7 +7,7 @@ function Sidebar() {
   
     const {setauth}=useContext(userContext)
     const logout=()=>{
-      setauth(null)
+      setauth()
     }
     return (
         <div >

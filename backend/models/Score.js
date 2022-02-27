@@ -8,15 +8,15 @@ const ScoreSchema = new Schema({
     },
     score: {
         type: Number,
-        required: true,
+        // required: true,
     },
     total: {
         type: Number,
-        required: true,
+        // required: true,
     },
     quiz: {
         type: String,
-        required: true
+     
     }
 })
 module.exports = mongoose.model("score", ScoreSchema)

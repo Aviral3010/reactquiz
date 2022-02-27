@@ -5,21 +5,29 @@ import Sidebar from './Sidebar'
 import Scorecard from './Scorecard'
 import Profile from './Profile'
 import Navbar from './Navbar'
+import Footer from './Footer'
 
 function Main() {
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <Sidebar />
-     
-     
-        <Routes>
-        <Route  path="/" element={<Quiz />} />
-        <Route   path="/score" element={<Scorecard />} />
-        <Route  exact path="/profile" element={<Profile />} />
+
+
+      <Routes>
+        <Route path="/" element={
+          <>
+          <Quiz test={'gk'}/>
+          <Quiz test={'math'}/>
+          <Quiz test={'gs'}/>
+          </>
+        } />
+        <Route path="/score" element={<Scorecard />} />
+        <Route exact path="/profile" element={<Profile />} />
 
       </Routes>
-     
+      <Footer />
+
 
 
 

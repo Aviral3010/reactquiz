@@ -444,3 +444,9 @@ input {
   color: #FF7500;
   text-decoration: none;
 }
+
+.option{
+  font-family: 'Muli' ;
+  font-size: 30px;
+  color: #eee;
+}

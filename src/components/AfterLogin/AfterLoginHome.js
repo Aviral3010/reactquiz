@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import Navbar from './Navbar'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes,useNavigate } from 'react-router-dom'
 import Sidebar from './Sidebar'
 import userContext from '../../context/user/usercontext'
 import Quiz from './Quiz'
@@ -33,12 +33,14 @@ function AfterLoginHome() {
 
 
             <Route path="/*" element={ <Main />} />
-            <Route path="/testmock" element={ <Test />} />
+            <Route exact path="/testgk" element={ <Test type={'gk'}/>} />
+            <Route exact path="/testmath" element={ <Test type={'math'}/>} />
+            <Route exact path="/testgs" element={ <Test type={'gs'}/>} />
 
           </Routes>
 
         </Router>
-        <Footer />
+        {/* <Footer /> */}
       </div>
 
     </>

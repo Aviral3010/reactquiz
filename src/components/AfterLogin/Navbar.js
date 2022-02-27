@@ -20,12 +20,10 @@ export default function Navbar() {
                         <li class="nav-item">
                             <Link class="nav-link active" aria-current="page" to="/">Home</Link>
                         </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" to="/score">Score card</Link>
+                        <li class="nav-item active">
+                            <Link class="nav-link active" to="/score">Score card</Link>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Contact</a>
-                        </li>
+                   
 
 
                     </ul>
@@ -33,18 +31,7 @@ export default function Navbar() {
 
             </div>
 
-            <div class="d-flex justify-content-end flex-shrink-1">
-                <button type="button" class="btn btn-primary position-relative" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                    Notification
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-
-                        <span class="visually-hidden">unread messages</span>
-                    </span>
-
-
-                </button>
-            </div>
+        
 
         </nav>)
 }

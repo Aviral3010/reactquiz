@@ -69,6 +69,7 @@ router.post('/login', async (req, res) => {
          }
       }
       const authToken = jwt.sign(payload, JWT_SECRET)
+      
       res.json({ authToken })
 
    } catch (error) {

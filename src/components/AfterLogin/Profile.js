@@ -1,4 +1,4 @@
-import React, { useState,useContext } from 'react'
+import React, { useState,useContext, useEffect } from 'react'
 import userContext from '../../context/user/usercontext'
 import axios from 'axios';
 
@@ -26,7 +26,7 @@ function Profile() {
             console.log(res);
             // if ()
             if (res.status === 200) {
-                setData(res.data,"if")
+                setData(res.data)
              
             }
 
@@ -38,10 +38,13 @@ function Profile() {
 
         }
     }
+    useEffect(async()=>{
+        await getdata()
+    },[])
    
     return (
         <div >
-        <button className='btn' onClick={getdata}>Click To View</button>
+        {/* <button className='btn' onClick={getdata}>Click To View</button> */}
 
             <h3>User Details</h3><br />
             <center>
